@@ -11,7 +11,7 @@ _**There are 2 sides of IAC**_
 * **Terraform** - Orchestration
 * **Kubernetes** - Orchestration is used in containerisation - i.e. Docker, Crio, Rocket.
 
-###Terraform?
+### Terraform?
 
 1.
 2.
