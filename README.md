@@ -55,11 +55,16 @@ terraform init
 ```
 
 ```bash
-# Check the steps inside the code and lists either 'SUCCESS' or 'ERROR'
+# Check the steps inside the code
+# lists either 'SUCCESS' or 'ERROR'
 terraform plan
 ```
 
 ```bash
-# This runs after everything has been checked to implement the code (Deploy the infrastructure)
+# This runs after everything has been checked 
+# Immplements the code (Deploy the infrastructure)
 terraform apply
 ```
+
+The [Terraform Registry](https://registry.terraform.io/) is amazingly written, it is informative and has many examples.
+
