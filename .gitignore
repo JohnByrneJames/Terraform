@@ -1,0 +1,3 @@
+Terraform_files/.terraform/
+Terraform_files/terraform.tfstate.backup
+Terraform_files/terraform.tfstate
