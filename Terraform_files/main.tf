@@ -214,3 +214,9 @@ resource "aws_network_acl" "public_NACL" {
 		Name = "Eng67_John_Public_NACL"
 	}
 }
+
+# 5. Create a Route Table for Private and Public Subnets
+
+resource "aws_route_table" "PrivateSubRoute" {
+	vpc_id = var.vpc_id
+}

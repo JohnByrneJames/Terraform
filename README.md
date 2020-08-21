@@ -66,5 +66,7 @@ terraform plan
 terraform apply
 ```
 
-The [Terraform Registry](https://registry.terraform.io/) is amazingly written, it is informative and has many examples.
+### Resources
 
+#### [Create a VPC on AWS](https://www.howtoforge.com/create-a-vpc-on-aws-using-terraform/)
+#### [Terraform Registry](https://registry.terraform.io/)
