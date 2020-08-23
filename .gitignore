@@ -1,3 +1,10 @@
 Terraform_files/.terraform/
 Terraform_files/terraform.tfstate.backup
 Terraform_files/terraform.tfstate
+
+Terraform_VPC_Files/.terraform
+Terraform_VPC_Files/terraform.tfstate.backup
+Terraform_VPC_Files/terraform.tfstate
+Terraform_VPC_Files/london-region-key-pair.pub
+Terraform_VPC_Files/london-region-key-pair
+Terraform_VPC_Files/var_private.tf
