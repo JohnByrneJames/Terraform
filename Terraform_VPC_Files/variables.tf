@@ -4,11 +4,6 @@
 # These are where are our access and secret keys to access the AWS is stored
 # However we are going to set these in our local computers environment variables as this is secure and prevents us from revealing our confidential credentials to the world on GitHub.
 
-variable "vpc_id" {
-	type = string
-	default = "vpc-07e47e9d90d2076da"
-}
-
 variable "cidr_block" {
 	type = string
 	default = "166.66.0.0/16"
