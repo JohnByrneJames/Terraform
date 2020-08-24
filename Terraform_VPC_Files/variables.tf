@@ -46,7 +46,7 @@ variable "zero_cidr_block" {
 variable "AMI" {
 	type = "map"
 
-	default {
+	default = {
 		ew-west-1 = "ami-04364f406bd3c73f0"
 	} 
 }
@@ -59,4 +59,9 @@ variable "PRIVATE_KEY_PATH" {
 variable "PUBLIC_KEY_PATH" {
 	type = string
 	default = "london-region-key-pair.pub"
+}
+
+variable "EC2_USER" {
+	type = string
+	default = "john_byrne"
 }

@@ -8,3 +8,4 @@ Terraform_VPC_Files/terraform.tfstate
 Terraform_VPC_Files/london-region-key-pair.pub
 Terraform_VPC_Files/london-region-key-pair
 Terraform_VPC_Files/var_private.tf
+Terraform_VPC_Files/terraform.out

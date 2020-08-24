@@ -61,8 +61,8 @@ resource "aws_route_table_association" "terraform_crt_public_subnet" {
 }
 
 resource "aws_network_acl" "terraform_pub_NACL" {
-	vpc_id = var.vpc_id
-	subnet_ids = "${aws_subnet.terraform_public_subnet.id}"
+	vpc_id = "${aws_vpc.terraform_vpc.id}"
+	subnet_ids = ["${aws_subnet.terraform_public_subnet.id}"]
 
 	#ingress {
 	#	protocol = "tcp"
@@ -168,8 +168,8 @@ resource "aws_route_table_association" "terraform_crt_private_subnet"{
 }
 
 resource "aws_network_acl" "terraform_priv_NACL" {
-	vpc_id = var.vpc_id
-	subnet_ids = "${aws_subnet.terraform_private_subnet.id}"
+	vpc_id = "${aws_vpc.terraform_vpc.id}"
+	subnet_ids = ["${aws_subnet.terraform_private_subnet.id}"]
 
 	ingress {
 		protocol = "tcp"
@@ -232,7 +232,7 @@ resource "aws_security_group" "terraform_VPC_SG" {
 		protocol = "tcp"
 		cidr_blocks = ["0.0.0.0/0"]
 	}
-
+	
 	ingress {
 		from_port = 443
 		to_port = 443
@@ -248,7 +248,7 @@ resource "aws_security_group" "terraform_VPC_SG" {
 # Create an EC2 Instance for an AMI image and then place it inside the public subnet
 
 resource "aws_instance" "ec2_webapp_instance" {
-	ami = "${lookup{var.AMI, var.region}}"
+	ami = "(var.AMI, var.region)" 
 	instance_type = "t2.micro"
 
 	# VPC
@@ -261,27 +261,28 @@ resource "aws_instance" "ec2_webapp_instance" {
 	key_name = "${aws_key_pair.london-region-key-pair.id}"
 
 	# NGINX installation for webapp
-	provision "file" {
+	provisioner "file" {
 		source = "nginx"
 		destination = "/home/ubuntu/environment/"
 	}
 
 	# Add app folder
-	provision "file" {
+	provisioner "file" {
 		source = "app"
 		destination = "/home/ubuntu/app/"
 	}
 
 	provisioner "remote-exec" {
 		inline = [
-			"chmod +x /home/ubuntu/environment/provision.sh"
+			"chmod +x /home/ubuntu/environment/provision.sh",
 			"sudo /home/ubuntu/environment/provision.sh"
 		]
 	}
 
 	connection {
-		user = "${var.EC2_USER}"
+		user = "${var.EC2_USER}"  # Should default to root
 		private_key = "${file("${var.PRIVATE_KEY_PATH}")}"
+		host = "${aws_instance.ec2_webapp_instance.public_ip}"
 	}
 }
 
